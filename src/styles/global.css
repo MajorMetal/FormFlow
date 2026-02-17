@@ -1,0 +1,70 @@
+/* FormFlow Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.formflow-root {
+  --ff-primary: #1a365d;
+  --ff-primary-contrast: #ffffff;
+  --ff-accent: #3b82f6;
+  --ff-bg: #ffffff;
+  --ff-text: #1a1a2e;
+  --ff-text-secondary: #6b7280;
+  --ff-font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ff-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ff-border-radius: 8px;
+  --ff-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: var(--ff-font-family);
+  color: var(--ff-text);
+  background-color: var(--ff-bg);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typeform-style input reset */
+.formflow-root input,
+.formflow-root textarea,
+.formflow-root select,
+.formflow-root button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+}
+
+.formflow-root input::placeholder,
+.formflow-root textarea::placeholder {
+  color: var(--ff-text-secondary);
+  opacity: 0.6;
+}
+
+/* Scrollbar hide for smooth scroll */
+.formflow-root ::-webkit-scrollbar {
+  display: none;
+}
+
+.formflow-root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Focus visible for accessibility */
+.formflow-root *:focus-visible {
+  outline: 2px solid var(--ff-accent);
+  outline-offset: 2px;
+}
+
+/* Typeform-style text selection */
+.formflow-root ::selection {
+  background-color: var(--ff-accent);
+  color: var(--ff-primary-contrast);
+}

@@ -1,0 +1,672 @@
+/* ============================================
+   FormFlow — Typeform-style CSS
+   ============================================ */
+
+/* Container */
+.ff-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ff-bg);
+}
+
+/* Background media */
+.ff-bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ff-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Logo */
+.ff-logo {
+  position: absolute;
+  z-index: 20;
+  padding: 20px 24px;
+}
+
+.ff-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.ff-logo--top-left { top: 0; left: 0; }
+.ff-logo--top-center { top: 0; left: 50%; transform: translateX(-50%); }
+.ff-logo--top-right { top: 0; right: 0; }
+
+/* Progress Bar */
+.ff-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 30;
+}
+
+.ff-progress-bar {
+  height: 100%;
+  background: var(--ff-accent);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Slides container */
+.ff-slides {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding: 60px 24px 80px;
+}
+
+/* ============================================
+   Question Card
+   ============================================ */
+
+.ff-card {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-card--split {
+  max-width: 1100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ff-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ff-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ff-card-media-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ff-card-media-inline {
+  margin: 8px 0;
+}
+
+/* Question number — Typeform style arrow */
+.ff-question-number {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ff-accent);
+  margin-bottom: 4px;
+}
+
+/* Question title */
+.ff-question-title {
+  font-family: var(--ff-font-heading);
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ff-text);
+  letter-spacing: -0.01em;
+}
+
+.ff-question-subtitle {
+  font-size: 16px;
+  color: var(--ff-text-secondary);
+  line-height: 1.5;
+}
+
+.ff-question-description {
+  font-size: 14px;
+  color: var(--ff-text-secondary);
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+/* ============================================
+   Input Styles — Typeform underline style
+   ============================================ */
+
+.ff-question-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ff-input {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: var(--ff-text);
+  transition: border-color 0.25s ease;
+  caret-color: var(--ff-accent);
+}
+
+.ff-input:focus {
+  border-bottom-color: var(--ff-accent);
+}
+
+.ff-input--error {
+  border-bottom-color: #ef4444;
+}
+
+.ff-textarea {
+  width: 100%;
+  padding: 8px 0;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: var(--ff-text);
+  resize: none;
+  overflow: hidden;
+  min-height: 60px;
+  line-height: 1.5;
+  transition: border-color 0.25s ease;
+  caret-color: var(--ff-accent);
+}
+
+.ff-textarea:focus {
+  border-bottom-color: var(--ff-accent);
+}
+
+/* Error message */
+.ff-error {
+  font-size: 13px;
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ff-error::before {
+  content: '⚠';
+  font-size: 12px;
+}
+
+/* Hint text */
+.ff-hint {
+  font-size: 12px;
+  color: var(--ff-text-secondary);
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+.ff-hint strong {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ============================================
+   Multiple Choice
+   ============================================ */
+
+.ff-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+}
+
+.ff-choices--horizontal {
+  flex-direction: row;
+  gap: 12px;
+}
+
+.ff-choice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: var(--ff-border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  color: var(--ff-text);
+  transition: all 0.2s ease;
+  position: relative;
+  min-width: 0;
+}
+
+.ff-choice:hover {
+  border-color: var(--ff-accent);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.ff-choice--selected {
+  border-color: var(--ff-accent);
+  background: color-mix(in srgb, var(--ff-accent) 8%, transparent);
+  color: var(--ff-accent);
+}
+
+.ff-choice--yesno {
+  flex: 1;
+  justify-content: center;
+  padding: 14px 24px;
+}
+
+.ff-choice-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.ff-choice--selected .ff-choice-letter {
+  background: var(--ff-accent);
+  color: var(--ff-primary-contrast);
+  border-color: var(--ff-accent);
+}
+
+.ff-choice-label {
+  flex: 1;
+}
+
+.ff-choice-check {
+  color: var(--ff-accent);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Rating Stars
+   ============================================ */
+
+.ff-rating {
+  display: flex;
+  gap: 8px;
+}
+
+.ff-rating-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: transform 0.15s ease;
+}
+
+.ff-rating-star:hover {
+  transform: scale(1.15);
+}
+
+.ff-rating-star--active {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   Opinion Scale
+   ============================================ */
+
+.ff-scale {
+  display: flex;
+  gap: 0;
+}
+
+.ff-scale-btn {
+  flex: 1;
+  min-width: 40px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ff-text);
+  transition: all 0.2s ease;
+  margin-left: -1px;
+}
+
+.ff-scale-btn:first-child {
+  border-radius: var(--ff-border-radius) 0 0 var(--ff-border-radius);
+  margin-left: 0;
+}
+
+.ff-scale-btn:last-child {
+  border-radius: 0 var(--ff-border-radius) var(--ff-border-radius) 0;
+}
+
+.ff-scale-btn:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.ff-scale-btn--selected {
+  background: var(--ff-accent);
+  color: var(--ff-primary-contrast);
+  border-color: var(--ff-accent);
+  z-index: 1;
+}
+
+.ff-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ff-text-secondary);
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.ff-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--ff-border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.ff-btn--primary,
+.ff-btn--start {
+  background: var(--ff-accent);
+  color: var(--ff-primary-contrast);
+}
+
+.ff-btn--primary:hover,
+.ff-btn--start:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ff-btn--start {
+  padding: 14px 32px;
+  font-size: 18px;
+}
+
+.ff-btn-hint {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-left: 4px;
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+
+.ff-nav {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 20;
+}
+
+.ff-nav-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ff-accent);
+  color: var(--ff-primary-contrast);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ff-nav-btn:first-child {
+  border-radius: var(--ff-border-radius) var(--ff-border-radius) 0 0;
+}
+
+.ff-nav-btn:last-child {
+  border-radius: 0 0 var(--ff-border-radius) var(--ff-border-radius);
+}
+
+.ff-nav-btn:only-child {
+  border-radius: var(--ff-border-radius);
+}
+
+.ff-nav-btn:hover {
+  opacity: 0.85;
+}
+
+/* ============================================
+   Welcome Screen
+   ============================================ */
+
+.ff-welcome {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.ff-welcome-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 12px;
+}
+
+.ff-welcome-title {
+  font-family: var(--ff-font-heading);
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ff-text);
+  letter-spacing: -0.02em;
+}
+
+.ff-welcome-subtitle {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: var(--ff-text-secondary);
+  line-height: 1.5;
+  max-width: 540px;
+}
+
+.ff-welcome-description {
+  font-size: 15px;
+  color: var(--ff-text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+  opacity: 0.8;
+}
+
+/* ============================================
+   End Screen
+   ============================================ */
+
+.ff-end {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ff-end-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.ff-end-checkmark {
+  margin-bottom: 8px;
+}
+
+.ff-end-title {
+  font-family: var(--ff-font-heading);
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: var(--ff-text);
+}
+
+.ff-end-subtitle {
+  font-size: 18px;
+  color: var(--ff-text-secondary);
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.ff-end-description {
+  font-size: 15px;
+  color: var(--ff-text-secondary);
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+
+.ff-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  font-size: 11px;
+  color: var(--ff-text-secondary);
+  opacity: 0.5;
+  z-index: 20;
+  user-select: none;
+}
+
+.ff-powered-by {
+  font-size: 12px;
+  color: var(--ff-text-secondary);
+  opacity: 0.5;
+  margin-top: 24px;
+}
+
+/* ============================================
+   Loading / Spinner
+   ============================================ */
+
+.ff-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.ff-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: var(--ff-accent);
+  border-radius: 50%;
+  animation: ff-spin 0.7s linear infinite;
+}
+
+@keyframes ff-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ff-card--split {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ff-card-media-side {
+    order: -1;
+  }
+
+  .ff-slides {
+    padding: 48px 20px 72px;
+  }
+
+  .ff-choice {
+    padding: 10px 14px;
+  }
+
+  .ff-scale-btn {
+    min-width: 32px;
+    height: 38px;
+    font-size: 12px;
+  }
+
+  .ff-nav {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ff-input,
+  .ff-textarea {
+    font-size: 18px;
+  }
+
+  .ff-question-title {
+    font-size: 20px;
+  }
+
+  .ff-welcome-title {
+    font-size: 26px;
+  }
+}
